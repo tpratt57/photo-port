@@ -3,8 +3,7 @@ import { render, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import About from '..';
 
-const { asFragment } = render(<About/>);
-expect(asFragment()).toMatchSnapshot();
+
 
 afterEach(cleanup);
 
@@ -13,10 +12,13 @@ describe('About component', () => {
 
     //First Test
     it('renders', () => {
-        render(<About/>);
+        render(<About />);
     })
     //Second Test
     it('matches snapshop DOM node structure', () => {
         // render About
-    })
+        const { asFragment } = render(<About />);
+
+        expect(asFragment()).toMatchSnapshot();
+    });
 })
